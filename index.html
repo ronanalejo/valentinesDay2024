@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day</title>
+    <style>
+        body {
+            background-color: #fce8e8; /* Light Pink background */
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            margin-top: 50px;
+        }
+
+        #question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        #yes, #no {
+            padding: 15px 25px;
+            font-size: 18px;
+            margin: 10px;
+            border-radius: 15px; /* Rounded corners for buttons */
+            cursor: pointer;
+        }
+
+        #yes {
+            background-color: #71c55d; /* Green for Yes */
+            color: #fff;
+        }
+
+        #no {
+            background-color: #d9534f; /* Red for No */
+            color: #fff;
+        }
+
+        #loveMessage {
+            display: none;
+            font-size: 18px;
+            margin-top: 30px;
+            color: #c9302c; /* Dark Red for Love Message */
+        }
+
+        #heart {
+            font-size: 36px;
+            color: #c9302c; /* Dark Red for Heart */
+            margin-top: 20px;
+            display: none;
+        }
+
+        /* Sparkles effect */
+        .sparkles {
+            display: inline-block;
+            position: relative;
+            color: #f8d4e2; /* Light Pink for Sparkles */
+        }
+
+        .sparkles:before {
+            content: "❤";
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            animation: sparkle 0.8s infinite alternate, moveHeart 4s infinite alternate;
+        }
+
+        @keyframes sparkle {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes moveHeart {
+            0% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(10px, -10px);
+            }
+            50% {
+                transform: translate(20px, 0);
+            }
+            75% {
+                transform: translate(10px, 10px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="question">
+        Will you be my valentine (on March)?
+    </div>
+
+    <button id="yes" onclick="showLoveMessage()">YES</button>
+    <button id="no" onclick="increaseButtonSize()">NO</button>
+
+    <div id="loveMessage" class="sparkles">
+        Happy Valentines Day my love, thank you for being there for me. You have been the best gift that I've received in my entire life. You have a superpower; when I feel down, sad, tired, and angry, I just look at you, and I will be happy and fully charged. You are the woman that I've been searching for my entire 22 years of existence, and I couldn't ask for more except for our relationship to last even when we are in heaven I want to still continue our love for each other. I will always love you every single day. I love you and I miss you very much.
+    </div>
+
+    <div id="heart" class="sparkles">❤</div>
+
+    <script>
+        let buttonSize = 18;
+
+        function increaseButtonSize() {
+            buttonSize += 5; // Increased the button size faster
+            document.getElementById('yes').style.fontSize = buttonSize + 'px';
+            showRandomMessage();
+        }
+
+        function showRandomMessage() {
+            const messages = [
+                "Please reconsider!",
+                "Are you sure?",
+                "Think again!",
+                "I'll make it worth your while!",
+                "Give it another chance!",
+                "Come on, don't be shy!",
+                "You're breaking my heart!",
+                "But I thought we were perfect!",
+                "I promise I'll do better!",
+                "Am I not your sunshine?",
+            ];
+
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
+            const messageContainer = document.createElement('div');
+            messageContainer.innerHTML = randomMessage;
+
+            document.body.appendChild(messageContainer);
+
+            setTimeout(() => {
+                messageContainer.remove();
+            }, 2000); // Display the message for 2 seconds
+        }
+
+        function showLoveMessage() {
+            document.getElementById('question').style.display = 'none';
+            document.getElementById('yes').style.display = 'none';
+            document.getElementById('no').style.display = 'none';
+
+            document.getElementById('loveMessage').style.display = 'block';
+            document.getElementById('heart').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
